@@ -22,8 +22,8 @@ jobs:
     steps:
       - checkout
       - run: echo hello
-          name : "echo my env variable"
-          command:
+          name: "echo my env variable"
+          command:  |
             echo $testudacity
 workflows:
   # Name the workflow "welcome"
