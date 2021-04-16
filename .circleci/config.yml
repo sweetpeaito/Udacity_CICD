@@ -31,6 +31,6 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - save_hello_world_output
-      - print_out_file
+      - print_out_file:
           requires:
             - save_hello_world_output
