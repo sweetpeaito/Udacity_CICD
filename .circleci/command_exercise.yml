@@ -1,4 +1,3 @@
-
 version: 2.1
 
 commands:
@@ -17,7 +16,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - print_pipeline_id:
-          to: echo $CIRCLE_WORKFLOW_ID
+          to:  $CIRCLE_WORKFLOW_ID
 
 workflows:
   my_workflow:
