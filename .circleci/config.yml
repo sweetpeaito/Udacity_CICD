@@ -1,7 +1,23 @@
 
 version: 2.1
 
+commands:
+  print_pipeline_id:
+    description: "A very simple command for demonstration purposes"
+    parameters:
+      to:
+        type: string
+        default: "Hello World"
+    steps:
+      - run: echo ${CIRCLE_WORKFLOW_ID}
 
+jobs:
+  print_ID:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - print_pipeline_id:
+          
 
 jobs:
   save_hello_world_output:
@@ -25,7 +41,9 @@ jobs:
 workflows:
   my_workflow:
     jobs:
+      - print_ID
       - save_hello_world_output
       - print_output_file:
           requires:
             - save_hello_world_output
+      
