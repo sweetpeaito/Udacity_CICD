@@ -1,0 +1,26 @@
+
+version: 2.1
+
+commands:
+  print_pipeline_id:
+    description: "A very simple command for demonstration purposes"
+    parameters:
+      to:
+        type: string
+        default: "Hello World"
+    steps:
+      - run: echo << parameters.to >>
+
+jobs:
+  print_ID:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - print_pipeline_id:
+          to: echo $CIRCLE_WORKFLOW_ID
+
+
+workflows:
+  my_workflow:
+    jobs:
+      - print_pipeline_id
