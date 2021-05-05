@@ -20,6 +20,17 @@ jobs:
           paths:
             - output.txt
 
+  failed_step:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: return 1
+      - run:
+          name: on error
+          command: echo "Hello Error!"
+          when: on_fail
+    
+
   print_output_file:
     docker:
       - image: circleci/node:13.8.0
